@@ -1,0 +1,48 @@
+:root {
+            --main: #61D1FF;
+        }
+
+        .charcter-name {
+            font-family: "Exo 2";
+        }
+
+        .charcter-descrip {
+            font-family: "Poppins";
+            -webkit-text-stroke: 0.7px black;
+        }
+
+        .Power {
+            -webkit-text-stroke: 0.7px black;
+        }
+
+        #Titel {
+            font-family: "Cinzel";
+            font-size: 4rem;
+            font-weight: bold;
+            padding: 16px;
+            margin: 4px;
+        }
+
+        #Description {
+            color: white;
+            font-family: "Poppins";
+            font-size: 1.2rem;
+        }
+
+        #h2 {
+            text-align: center;
+            font-family: "Exo 2";
+            font-weight: bold;
+            font-size: 3rem;
+            color: var(--main);
+        }
+        @keyframes scroll  {
+    from {
+        transform: translateX(0);
+    }to {
+        transform: translateX(-100%);
+        }
+    }
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+}
