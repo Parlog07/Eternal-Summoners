@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kavoon&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Market</title>
+</head>
+
+<body class="bg-black">
+    <header class="flex gap-72 justify-around p-8 mr-24">
+        <div class="Logo w-48"><img src="img/miniLogo.png" alt="Logo"></div>
+        <div class=" flex justify-center items-center">
+            <ul class="flex  gap-28 justify-center items-center text-[#A0A0A0] font-bold font-[poppins]">
+                <li class=" hover:text-[var(--main)] transition duration-500"><a href="Guid.html">Guide</a></li>
+                <li class=" hover:text-[var(--main)] transition duration-500"><a href="Market.html">Market</a></li>
+                <li class=" hover:text-[var(--main)] transition duration-500"><a href="#">
+                        <span class="text-4xl font-[kavoon]">Play</span></a></li>
+                <li class=" hover:text-[var(--main)] transition duration-500"><a href="My-Deck.html">My Deck</a></li>
+                <li class=" hover:text-[var(--main)] transition duration-500"><a href="Favorite.html">Favorite</a></li>
+            </ul>
+        </div>
+        <div class="Store"><img src="img/Shopping.png" alt="Cart-Symbol"></div>
+    </header>
+    <div class="text-center">
+        <h1 id="Titel" class="text-[var(--main)]">Favorite</h1>
+        <p id="Description" class="text-center">Your favorite summons — hand-picked from the realms you’ve conquered.
+            <br>Here you can revisit, manage, and summon the cards you treasure most. <br>Every card here reflects your
+            journey as a summoner.</p>
+    </div>
+    <div class="flex justify-center items-center m-24 gap-8 text-center">
+        <button class="filter-btn bg-yellow-500 text-white rounded-xl w-28 py-1 font-[poppins] "
+            data-rarity="Mythic">Mythic</button>
+        <button class="filter-btn bg-red-500 text-white rounded-xl w-28 py-1 font-[poppins] "
+            data-rarity="Legendary">Legendary</button>
+        <button class="filter-btn bg-purple-500 text-white rounded-xl w-28 py-1 font-[poppins] "
+            data-rarity="Epic">Epic</button>
+        <button class="filter-btn bg-green-500 text-white rounded-xl w-28 py-1 font-[poppins] "
+            data-rarity="Rare">Rare</button>
+        <button class="filter-btn bg-gray-400 text-white rounded-xl w-28 py-1 font-[poppins] "
+            data-rarity="Common">Common</button>
+    </div>
+    <section id="market" class="flex justify-center items-center">
+        <div class="Card-Container grid grid-cols-3 grid-rows-2 gap-36">
+            <div>
+                <div
+                    class="some w-[17rem] h-[29rem] text-red-500 p-3 relative bg-[url(img/TrueCard.png)] bg-cover flex flex-col justify-between">
+                    <div class="top text-red-600 font-bold text-center text-[26px]">
+                        <h2>L</h2>
+                    </div>
+                    <div class="bottom flex flex-col text-white font-bold gap-6">
+                        <div class="Power flex justify-around">
+                            <p>Def : 700</p>
+                            <p>Atk : 1250</p>
+                        </div>
+                        <p class="charcter-descrip text-center text-[10px]">A sorceress of moonlight who
+                            <br>commands
+                            shadows and dreams.
+                        </p>
+                        <h2 class="charcter-name text-center text-black mb-1 font-exo">Lunara</h2>
+                    </div>
+                </div> 
+                <div class="flex justify-center items-center gap-3 mt-3">
+                     <button
+                        class="font-[poppins] rounded bg-black text-[#ff0000] [border:solid_2px_#FF0022] shadow-[#FF0022] shadow-[0_0_8px] w-32 hover:bg-[#FF0022] hover:text-black hover:translate-y-[-0.3rem] transition duration-700">Remove</button>
+                   <button
+                        class="font-[poppins] rounded bg-[#61D1FF] text-black [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] hover:translate-y-[-0.3rem] transition duration-700">
+                        Add To Cart</button>
+                </div>
+            </div>
+            <div>
+                <div
+                    class="some w-[17rem] h-[29rem] text-red-500 p-3 relative bg-[url(img/TrueCard.png)] bg-cover flex flex-col justify-between">
+                    <div class="top text-red-600 font-bold text-center text-[26px]">
+                        <h2>L</h2>
+                    </div>
+                    <div class="bottom flex flex-col text-white font-bold gap-6">
+                        <div class="Power flex justify-around">
+                            <p>Def : 700</p>
+                            <p>Atk : 1250</p>
+                        </div>
+                        <p class="charcter-descrip text-center text-[10px]">A sorceress of moonlight who
+                            <br>commands
+                            shadows and dreams.
+                        </p>
+                        <h2 class="charcter-name text-center text-black mb-1 font-exo">Lunara</h2>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center gap-3 mt-3">
+                     <button
+                        class="font-[poppins] rounded bg-black text-[#ff0000] [border:solid_2px_#FF0022] shadow-[#FF0022] shadow-[0_0_8px] w-32 hover:bg-[#FF0022] hover:text-black hover:translate-y-[-0.3rem] transition duration-700">Remove</button>
+                   <button
+                        class="font-[poppins] rounded bg-[#61D1FF] text-black [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] hover:translate-y-[-0.3rem] transition duration-700">
+                        Add To Cart</button>
+                </div>
+            </div>
+            <div>
+                <div
+                    class="some w-[17rem] h-[29rem] text-red-500 p-3 relative bg-[url(img/TrueCard.png)] bg-cover flex flex-col justify-between">
+                    <div class="top text-red-600 font-bold text-center text-[26px]">
+                        <h2>L</h2>
+                    </div>
+                    <div class="bottom flex flex-col text-white font-bold gap-6">
+                        <div class="Power flex justify-around">
+                            <p>Def : 700</p>
+                            <p>Atk : 1250</p>
+                        </div>
+                        <p class="charcter-descrip text-center text-[10px]">A sorceress of moonlight who
+                            <br>commands
+                            shadows and dreams.
+                        </p>
+                        <h2 class="charcter-name text-center text-black mb-1 font-exo">Lunara</h2>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center gap-3 mt-3">
+                     <button
+                        class="font-[poppins] rounded bg-black text-[#ff0000] [border:solid_2px_#FF0022] shadow-[#FF0022] shadow-[0_0_8px] w-32 hover:bg-[#FF0022] hover:text-black hover:translate-y-[-0.3rem] transition duration-700">Remove</button>
+                    <button
+                        class="font-[poppins] rounded bg-[#61D1FF] text-black [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] hover:translate-y-[-0.3rem] transition duration-700">
+                        Add To Cart</button>
+                </div>
+            </div>
+            <div>
+                <div
+                    class="some w-[17rem] h-[29rem] text-red-500 p-3 relative bg-[url(img/TrueCard.png)] bg-cover flex flex-col justify-between">
+                    <div class="top text-red-600 font-bold text-center text-[26px]">
+                        <h2>L</h2>
+                    </div>
+                    <div class="bottom flex flex-col text-white font-bold gap-6">
+                        <div class="Power flex justify-around">
+                            <p>Def : 700</p>
+                            <p>Atk : 1250</p>
+                        </div>
+                        <p class="charcter-descrip text-center text-[10px]">A sorceress of moonlight who
+                            <br>commands
+                            shadows and dreams.
+                        </p>
+                        <h2 class="charcter-name text-center text-black mb-1 font-exo">Lunara</h2>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center gap-3 mt-3">
+                     <button
+                        class="font-[poppins] rounded bg-black text-[#ff0000] [border:solid_2px_#FF0022] shadow-[#FF0022] shadow-[0_0_8px] w-32 hover:bg-[#FF0022] hover:text-black hover:translate-y-[-0.3rem] transition duration-700">Remove</button>
+                    <button
+                        class="font-[poppins] rounded bg-[#61D1FF] text-black [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] hover:translate-y-[-0.3rem] transition duration-700">
+                        Add To Cart</button>
+                </div>
+            </div>
+            <div>
+                <div
+                    class="some w-[17rem] h-[29rem] text-red-500 p-3 relative bg-[url(img/TrueCard.png)] bg-cover flex flex-col justify-between">
+                    <div class="top text-red-600 font-bold text-center text-[26px]">
+                        <h2>L</h2>
+                    </div>
+                    <div class="bottom flex flex-col text-white font-bold gap-6">
+                        <div class="Power flex justify-around">
+                            <p>Def : 700</p>
+                            <p>Atk : 1250</p>
+                        </div>
+                        <p class="charcter-descrip text-center text-[10px]">A sorceress of moonlight who
+                            <br>commands
+                            shadows and dreams.
+                        </p>
+                        <h2 class="charcter-name text-center text-black mb-1 font-exo">Lunara</h2>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center gap-3 mt-3">
+                    <button
+                        class="font-[poppins] rounded bg-black text-[#ff0000] [border:solid_2px_#FF0022] shadow-[#FF0022] shadow-[0_0_8px] w-32 hover:bg-[#FF0022] hover:text-black hover:translate-y-[-0.3rem] transition duration-700">Remove</button>
+                    <button
+                        class="font-[poppins] rounded bg-[#61D1FF] text-black [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] hover:translate-y-[-0.3rem] transition duration-700">
+                        Add To Cart</button>
+                </div>
+            </div>
+            <div>
+                <div
+                    class="some w-[17rem] h-[29rem] text-red-500 p-3 relative bg-[url(img/TrueCard.png)] bg-cover flex flex-col justify-between">
+                    <div class="top text-red-600 font-bold text-center text-[26px]">
+                        <h2>L</h2>
+                    </div>
+                    <div class="bottom flex flex-col text-white font-bold gap-6">
+                        <div class="Power flex justify-around">
+                            <p>Def : 700</p>
+                            <p>Atk : 1250</p>
+                        </div>
+                        <p class="charcter-descrip text-center text-[10px]">A sorceress of moonlight who
+                            <br>commands
+                            shadows and dreams.
+                        </p>
+                        <h2 class="charcter-name text-center text-black mb-1 font-exo">Lunara</h2>
+                    </div>
+                </div>
+
+                <div class="flex justify-center items-center gap-3 mt-3">
+                    <button
+                        class="font-[poppins] rounded bg-black text-[#ff0000] [border:solid_2px_#FF0022] shadow-[#FF0022] shadow-[0_0_8px] w-32 hover:bg-[#FF0022] hover:text-black hover:translate-y-[-0.3rem] transition duration-700">Remove</button>
+                    <button
+                        class="font-[poppins] rounded bg-[#61D1FF] text-black [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] hover:translate-y-[-0.3rem] transition duration-700">
+                        Add To Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="pagination flex justify-center mt-10 gap-4">
+        <button
+            class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold "
+            data-page="1">1</button>
+        <button
+            class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold "
+            data-page="2">2</button>
+        <button
+            class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold "
+            data-page="3">3</button>
+        <button
+            class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold "
+            data-page="4">4</button>
+        <button
+            class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold "
+            data-page="next">»</button>
+    </div>
+
+    <footer class="my-16">
+        <div class="flex items-center justify-center">
+            <img src="img/footerLogo.png" alt="">
+        </div>
+        <div class="flex items-center justify-center gap-3 m-6 text-white">
+            <p class="text-[26px] font-[cinzel]">Availabel On : </p>
+            <div class="flex gap-4">
+                <img src="img/steamlogo.png" alt="">
+                <img src="img/epiclogo.png" alt="">
+                <img src="img/Xboxlogo.png" alt="">
+                <img src="img/Ubisoftlogo.png" alt="">
+            </div>
+        </div>
+        <div class="flex justify-center items-center gap-28 text-white m-10">
+            <a href="#">Term & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Collection Statement</a>
+        </div>
+        <p class="text-white flex justify-center items-center m-8">© All rights reserved by Ayoub-Amine</p>
+    </footer>
+    <script src="filter.js"></script>
+</body>
+
+</html>
