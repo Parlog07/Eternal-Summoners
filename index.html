@@ -12,7 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kavoon&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Market</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body class="bg-black">
@@ -30,32 +31,47 @@
         </div>
         <div class="Store"><img src="img/Shopping.png" alt="Cart-Symbol"></div>
     </header>
-    <div class="text-center">
-        <h1 id="Titel" class="text-[var(--main)]">The Eternal Market</h1>
-        <p id="Description" class="text-center">Discover, Trade, and Summon the Rarest Digital Cards.</p>
+    <div
+        class="hero w-full h-screen bg-cover bg-[url(img/background.png)] animate-pulse duration-0.001 cursor-pointer flex justify-center items-center relative">
     </div>
-    <div class="flex justify-center items-center m-24 gap-8 text-center">
-        <button class="filter-btn bg-yellow-500 text-white rounded-xl w-28 py-1 font-[poppins] "data-rarity="Mythic">Mythic</button>
-        <button class="filter-btn bg-red-500 text-white rounded-xl w-28 py-1 font-[poppins] "data-rarity="Legendary">Legendary</button>
-        <button class="filter-btn bg-purple-500 text-white rounded-xl w-28 py-1 font-[poppins] "data-rarity="Epic">Epic</button>
-        <button class="filter-btn bg-green-500 text-white rounded-xl w-28 py-1 font-[poppins] "data-rarity="Rare">Rare</button>
-        <button class="filter-btn bg-gray-400 text-white rounded-xl w-28 py-1 font-[poppins] " data-rarity="Common">Common</button>
-    </div>
-<section id="market" class="flex justify-center items-center">
-    <div class="Card-Container grid grid-cols-3  gap-36">
-        
-    </div>
-</section>
+    <img src="img/footerLogo.png" alt="Logo" class="absolute top-[45%] right-[25%] w-6/12">
 
-<div class="pagination flex justify-center mt-10 gap-4">
-  <button class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold " data-page="1">1</button>
-  <button class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold " data-page="2">2</button>
-  <button class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold " data-page="3">3</button>
-  <button class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold " data-page="4">4</button>
-  <button class="page-btn rounded-full bg-black text-[#61D1FF] [border:solid_2px_#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-6 h-6 p-6 flex justify-center items-center font-[poppins] font-bold " data-page="next">»</button>
-</div>
+    <section class="w-[99vw] overflow-hidden my-16">
+        <div class="flex overflow-hidden  py-8 w-[400%]">
+            <div class="flex animate-scroll space-x-6 px-[0.5rem]">
+                <img src="img/Ballena.png" class="object-contain" alt="">
+                <img src="img/dragon.png" class=" object-contain" alt="">
+                <img src="img/wolf.png" class=" object-contain" alt="">
+                <img src="img/Bull.png" class="object-contain" alt="">
+                <img src="img/Fox.png" class="object-contain" alt="">
+            </div>
+            <div class="flex animate-scroll space-x-6">
+                <img src="img/Ballena.png" class="object-contain" alt="">
+                <img src="img/dragon.png" class=" object-contain" alt="">
+                <img src="img/wolf.png" class=" object-contain" alt="">
+                <img src="img/Bull.png" class="object-contain" alt="">
+                <img src="img/Fox.png" class="object-contain" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="conttainer">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg[url(img/C01.png)]"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+            </div>
+        </div>
+    </section>
 
- <footer class="my-16">
+
+    <footer class="my-16">
         <div class="flex items-center justify-center">
             <img src="img/footerLogo.png" alt="">
         </div>
@@ -75,7 +91,13 @@
         </div>
         <p class="text-white flex justify-center items-center m-8">© All rights reserved by Ayoub-Amine</p>
     </footer>
-    <script src="CardSystem.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+        });
+    </script>
 </body>
 
 </html>

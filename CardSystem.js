@@ -1,9 +1,11 @@
-const isFavoritePage = window.location.pathname.includes("Favorite.html");
+const path = window.location.pathname;
+const isMarket = path.includes("Market.html");
+const isFavorite = path.includes("Favorite.html");
+const isDeck = path.includes("My-Deck.html");
 
 let cards = [];
-if (isFavoritePage) {
-  cards = JSON.parse(localStorage.getItem("favorites")) || [];
-} else {
+
+if (isMarket) {
   cards = [
     { name: "Lunara", rarity: "Legendary", atk: 1250, def: 700, description: "A sorceress of moonlight who commands shadows and dreams.", price: 960, bg: "img/L01.png" },
     { name: "Drakar", rarity: "Mythic", atk: 9800, def: 5000, description: "A dragon forged in cosmic fire, guardian of the stars.", price: 1150, bg: "img/M01.png" },
@@ -19,30 +21,42 @@ if (isFavoritePage) {
     { name: "Korin", rarity: "Rare", atk: 870, def: 530, description: "A rogue swordsman who fights for gold, not glory.", price: 550, bg: "img/R3.png" },
     { name: "Nyxa", rarity: "Common", atk: 520, def: 340, description: "A mischievous imp who delights in causing harmless chaos.", price: 310, bg: "img/C03.png" }
   ];
+} else if (isFavorite) {
+  cards = JSON.parse(localStorage.getItem("favorites")) || [];
+} else if (isDeck) {
+  cards = JSON.parse(localStorage.getItem("deck")) || [];
 }
 
 let currentPage = 1;
 const cardsPerPage = 9;
 let filteredCards = [];
 
+function getRarityColor(rarity) {
+  switch (rarity) {
+    case "Mythic": return "#FFD700";
+    case "Legendary": return "#FF6B00";
+    case "Epic": return "#A020F0";
+    case "Rare": return "#00FF99";
+    case "Common": return "#A0A0A0";
+    default: return "#FFFFFF";
+  }
+}
+
 function displayCards(cardList) {
   const container = document.querySelector(".Card-Container");
   container.innerHTML = "";
-
   if (!cardList || cardList.length === 0) {
-    container.innerHTML = `<p class="text-center text-gray-400 text-xl col-span-3">No cards found. ${isFavoritePage ? "Go to Market and add some favorites!" : ""}</p>`;
+    container.innerHTML = `<p class="text-center text-gray-400 text-xl col-span-3">No cards to display.</p>`;
     return;
   }
-
   const start = (currentPage - 1) * cardsPerPage;
   const end = start + cardsPerPage;
   const paginatedCards = cardList.slice(start, end);
-
   paginatedCards.forEach(card => {
-    const cardHTML = `
+    container.innerHTML += `
       <div>
-        <div class="some w-[17rem] h-[29rem] p-3 relative bg-cover flex flex-col justify-between transition-transform duration-300 hover:scale-105 rounded-2xl shadow-lg" style="background-image: url('${card.bg}');">
-          <div class="top text-red-600 font-bold text-center text-[26px]">
+        <div class="some w-[17rem] h-[29rem] p-3 relative bg-cover flex flex-col justify-between rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105" style="background-image: url('${card.bg}');">
+          <div class="top font-bold text-center text-[26px]" style="color:${getRarityColor(card.rarity)};">
             <h2>${card.rarity.charAt(0)}</h2>
           </div>
           <div class="bottom flex flex-col text-white font-bold gap-6">
@@ -55,34 +69,34 @@ function displayCards(cardList) {
           </div>
         </div>
         <p class="text-center text-white font-[poppins]">Price : ${card.price} $</p>
-        <div class="flex justify-center items-center gap-3 mt-2">
-          ${
-            isFavoritePage
-              ? `<button onclick="removeFavorite('${card.name}')" class="font-[poppins] rounded bg-black text-red-500 border-2 border-red-500 shadow-[0_0_8px_rgba(255,0,0,0.2)] w-32 hover:bg-red-500 hover:text-black transition duration-500">Remove</button>`
-              : `<button class="fav-btn font-[poppins] rounded bg-black text-[#61D1FF] border-2 border-[#61D1FF] shadow-[0_0_8px_rgba(97,209,255,0.18)] w-32 hover:bg-[#61D1FF] hover:text-black transition" data-name="${card.name}">Favorite</button>`
-          }
-          <button class="font-[poppins] rounded bg-[#61D1FF] text-black border-2 border-[#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] transition duration-500">
-            Add To Cart
-          </button>
-        </div>
-      </div>`;
-    container.innerHTML += cardHTML;
+        ${
+          isMarket
+            ? `<div class="flex justify-center items-center gap-3 mt-2">
+                 <button class="fav-btn font-[poppins] rounded bg-black text-[#61D1FF] border-2 border-[#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-[#61D1FF] hover:text-black transition" data-name="${card.name}">Favorite</button>
+                 <button class="cart-btn font-[poppins] rounded bg-[#61D1FF] text-black border-2 border-[#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] transition" data-name="${card.name}">Add To Cart</button>
+               </div>`
+            : isFavorite
+            ? `<div class="flex justify-center items-center gap-3 mt-2">
+                 <button class="remove-fav font-[poppins] rounded bg-red-600 text-white border-2 border-red-400 shadow-red-400 shadow-[0_0_8px] w-32 hover:bg-red-700 transition" data-name="${card.name}">Remove</button>
+                 <button class="cart-btn font-[poppins] rounded bg-[#61D1FF] text-black border-2 border-[#61D1FF] shadow-[#61D1FF] shadow-[0_0_8px] w-32 hover:bg-black hover:text-[#61D1FF] transition" data-name="${card.name}">Add To Cart</button>
+               </div>`
+            : ""
+        }
+      </div>
+    `;
   });
-
   updatePagination(cardList);
 }
 
 function updatePagination(cardList) {
   const pagination = document.querySelector(".pagination");
+  if (!pagination) return;
   pagination.innerHTML = "";
   const totalPages = Math.ceil(cardList.length / cardsPerPage);
-
   for (let i = 1; i <= totalPages; i++) {
     const btn = document.createElement("button");
     btn.textContent = i;
-    btn.className = `page-btn w-8 h-8 rounded-full font-bold border-2 ${
-      i === currentPage ? "bg-[#61D1FF] text-black border-[#61D1FF]" : "bg-black text-[#61D1FF] border-[#61D1FF]"
-    } transition duration-300 hover:scale-110`;
+    btn.className = `page-btn w-8 h-8 rounded-full font-bold border-2 ${i === currentPage ? "bg-[#61D1FF] text-black border-[#61D1FF]" : "bg-black text-[#61D1FF] border-[#61D1FF]"} transition duration-300 hover:scale-110`;
     btn.addEventListener("click", () => {
       currentPage = i;
       displayCards(filteredCards.length > 0 ? filteredCards : cards);
@@ -90,7 +104,6 @@ function updatePagination(cardList) {
     });
     pagination.appendChild(btn);
   }
-
   if (totalPages > 1) {
     const nextBtn = document.createElement("button");
     nextBtn.textContent = "»";
@@ -123,7 +136,7 @@ filterButtons.forEach(button => {
   });
 });
 
-if (!isFavoritePage) {
+if (isMarket) {
   document.addEventListener("click", e => {
     if (e.target.classList.contains("fav-btn")) {
       const cardName = e.target.dataset.name;
@@ -136,19 +149,22 @@ if (!isFavoritePage) {
         e.target.textContent = "Favorite";
       } else {
         favorites.push(card);
-        e.target.textContent = "❤️ Favorited";
+        e.target.textContent = "Favorited ❤️";
       }
       localStorage.setItem("favorites", JSON.stringify(favorites));
     }
   });
 }
 
-function removeFavorite(name) {
-  if (!isFavoritePage) return;
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  favorites = favorites.filter(c => c.name !== name);
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  displayCards(favorites);
+if (isFavorite) {
+  document.addEventListener("click", e => {
+    if (e.target.classList.contains("remove-fav")) {
+      const name = e.target.dataset.name;
+      cards = cards.filter(card => card.name !== name);
+      localStorage.setItem("favorites", JSON.stringify(cards));
+      displayCards(cards);
+    }
+  });
 }
 
 displayCards(cards);
