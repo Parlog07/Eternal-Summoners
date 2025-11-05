@@ -44,6 +44,7 @@ function getRarityColor(rarity) {
 
 function displayCards(cardList) {
   const container = document.querySelector(".Card-Container");
+  if (!container) return;
   container.innerHTML = "";
   if (!cardList || cardList.length === 0) {
     container.innerHTML = `<p class="text-center text-gray-400 text-xl col-span-3">No cards to display.</p>`;
@@ -104,19 +105,6 @@ function updatePagination(cardList) {
     });
     pagination.appendChild(btn);
   }
-  if (totalPages > 1) {
-    const nextBtn = document.createElement("button");
-    nextBtn.textContent = "»";
-    nextBtn.className = "page-btn w-8 h-8 rounded-full font-bold bg-black text-[#61D1FF] border-2 border-[#61D1FF] transition hover:scale-110";
-    nextBtn.addEventListener("click", () => {
-      if (currentPage < totalPages) {
-        currentPage++;
-        displayCards(filteredCards.length > 0 ? filteredCards : cards);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    });
-    pagination.appendChild(nextBtn);
-  }
 }
 
 const filterButtons = document.querySelectorAll(".filter-btn");
@@ -136,35 +124,125 @@ filterButtons.forEach(button => {
   });
 });
 
-if (isMarket) {
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("fav-btn")) {
-      const cardName = e.target.dataset.name;
-      const card = cards.find(c => c.name === cardName);
-      if (!card) return;
-      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-      const exists = favorites.some(f => f.name === card.name);
-      if (exists) {
-        favorites = favorites.filter(f => f.name !== card.name);
-        e.target.textContent = "Favorite";
-      } else {
-        favorites.push(card);
-        e.target.textContent = "Favorited ❤️";
-      }
-      localStorage.setItem("favorites", JSON.stringify(favorites));
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("fav-btn")) {
+    const cardName = e.target.dataset.name;
+    const card = cards.find(c => c.name === cardName);
+    if (!card) return;
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const exists = favorites.some(f => f.name === card.name);
+    if (exists) {
+      favorites = favorites.filter(f => f.name !== card.name);
+      e.target.textContent = "Favorite";
+    } else {
+      favorites.push(card);
+      e.target.textContent = "Favorited ❤️";
     }
-  });
-}
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }
 
-if (isFavorite) {
-  document.addEventListener("click", e => {
-    if (e.target.classList.contains("remove-fav")) {
-      const name = e.target.dataset.name;
-      cards = cards.filter(card => card.name !== name);
-      localStorage.setItem("favorites", JSON.stringify(cards));
-      displayCards(cards);
+  if (e.target.classList.contains("remove-fav")) {
+    const name = e.target.dataset.name;
+    cards = cards.filter(card => card.name !== name);
+    localStorage.setItem("favorites", JSON.stringify(cards));
+    displayCards(cards);
+  }
+
+  if (e.target.classList.contains("cart-btn")) {
+    const cardName = e.target.dataset.name;
+    const card = cards.find(c => c.name === cardName);
+    if (!card) return;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const exists = cart.find(c => c.name === card.name);
+    if (exists) {
+      exists.quantity += 1;
+    } else {
+      cart.push({ ...card, quantity: 1 });
     }
-  });
-}
+    localStorage.setItem("cart", JSON.stringify(cart));
+    e.target.textContent = "Added 🃏";
+    e.target.disabled = true;
+  }
+});
 
 displayCards(cards);
+
+const cartIcon = document.getElementById("cart-btn");
+const cartModal = document.getElementById("cart-modal");
+const closeCart = document.getElementById("close-cart");
+const cartItemsContainer = document.getElementById("cart-items");
+const cartTotal = document.getElementById("cart-total");
+const clearCart = document.getElementById("clear-cart");
+const checkoutBtn = document.getElementById("checkout");
+
+function updateCartDisplay() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartItemsContainer.innerHTML = "";
+  let total = 0;
+  cart.forEach(card => {
+    total += card.price * card.quantity;
+    cartItemsContainer.innerHTML += `
+      <div class="flex items-center justify-between bg-white p-2 rounded-lg shadow">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 bg-gray-300 rounded-md" style="background-image:url('${card.bg}');background-size:cover;"></div>
+          <div class="text-left">
+            <p class="font-bold text-black text-sm">${card.name}</p>
+            <p class="text-xs text-gray-600">${card.rarity}</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="decrease text-black font-bold" data-name="${card.name}">-</button>
+          <p class="text-black font-semibold">${card.quantity}</p>
+          <button class="increase text-black font-bold" data-name="${card.name}">+</button>
+          <p class="text-[#ff6b00] font-semibold text-sm">$${card.price * card.quantity}</p>
+        </div>
+      </div>`;
+  });
+  cartTotal.textContent = `$${total}`;
+}
+
+cartItemsContainer?.addEventListener("click", e => {
+  if (e.target.classList.contains("increase") || e.target.classList.contains("decrease")) {
+    const name = e.target.dataset.name;
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const card = cart.find(c => c.name === name);
+    if (!card) return;
+    if (e.target.classList.contains("increase")) card.quantity++;
+    if (e.target.classList.contains("decrease")) {
+      card.quantity--;
+      if (card.quantity <= 0) cart = cart.filter(c => c.name !== name);
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartDisplay();
+  }
+});
+
+cartIcon?.addEventListener("click", () => {
+  updateCartDisplay();
+  cartModal.classList.remove("hidden");
+});
+
+closeCart?.addEventListener("click", () => {
+  cartModal.classList.add("hidden");
+});
+
+clearCart?.addEventListener("click", () => {
+  localStorage.removeItem("cart");
+  updateCartDisplay();
+});
+
+checkoutBtn?.addEventListener("click", () => {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length === 0) return;
+  let deck = JSON.parse(localStorage.getItem("deck")) || [];
+  deck = [...deck, ...cart];
+  localStorage.setItem("deck", JSON.stringify(deck));
+  localStorage.removeItem("cart");
+  updateCartDisplay();
+  alert("✅ Cards successfully added to your Deck!");
+});
+
+if (isDeck) {
+  const deckCards = JSON.parse(localStorage.getItem("deck")) || [];
+  displayCards(deckCards);
+}
