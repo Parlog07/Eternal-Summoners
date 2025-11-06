@@ -246,3 +246,14 @@ if (isDeck) {
   const deckCards = JSON.parse(localStorage.getItem("deck")) || [];
   displayCards(deckCards);
 }
+
+
+
+window.addEventListener("scroll", () => {
+  const header = document.getElementById("mainHeader");
+  if (window.scrollY > 80) {
+    header.classList.add("shadow-[0_0_20px_#61D1FF]");
+  } else {
+    header.classList.remove("shadow-[0_0_20px_#61D1FF]");
+  }
+});

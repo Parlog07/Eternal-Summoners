@@ -17,7 +17,7 @@
 </head>
 
 <body class="bg-black">
-    <header class="flex gap-72 justify-around p-8 mr-24">
+<header id="mainHeader" class="sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
         <div class="Logo w-48"> <a href="index.html"><img src="img/miniLogo.png" alt="Logo"></a></div>
         <div class=" flex justify-center items-center">
             <ul class="flex  gap-28 justify-center items-center text-[#A0A0A0] font-bold font-[poppins]">
@@ -36,7 +36,7 @@
     <div
         class="hero w-full h-screen bg-cover bg-[url(img/background.png)] animate-pulse duration-0.001 cursor-pointer flex justify-center items-center relative">
     </div>
-    <img src="img/footerLogo.png" alt="Logo" class="absolute top-[45%] right-[25%] w-6/12">
+    <img src="img/footerLogo.png" alt="Logo" class="absolute top-[35%] right-[25%] w-6/12">
 
     <section class="w-[99vw] overflow-hidden my-16">
         <div class="flex overflow-hidden  py-8 w-[400%]">
@@ -84,96 +84,100 @@
     </section>
 
 
-<section class="relative py-24 bg-gradient-to-b from-black via-[#0a0a0a] to-black text-white overflow-hidden">
-  <div class="text-center mb-16">
-    <h2 class="text-5xl font-[cinzel] text-[#61D1FF] drop-shadow-[0_0_10px_#61D1FF] animate-fadeIn">
-      Awaken Your Power
-    </h2>
-    <p class="text-gray-400 text-lg mt-4 font-[Poppins]">
-      Master every aspect of the Eternal Summoners world — from building your deck to conquering the arena.
-    </p>
-  </div>
+    <section class="relative py-24 bg-gradient-to-b from-black via-[#0a0a0a] to-black text-white overflow-hidden">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-[cinzel] text-[#61D1FF] drop-shadow-[0_0_10px_#61D1FF] animate-fadeIn">
+                Awaken Your Power
+            </h2>
+            <p class="text-gray-400 text-lg mt-4 font-[Poppins]">
+                Master every aspect of the Eternal Summoners world — from building your deck to conquering the arena.
+            </p>
+        </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-16 px-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-16 px-16">
 
-    <div class="feature-card text-center p-6 rounded-2xl bg-black/60 border border-[#61D1FF]/20 hover:border-[#61D1FF] transition-all duration-500 shadow-[0_0_15px_rgba(97,209,255,0.15)] hover:shadow-[0_0_25px_rgba(97,209,255,0.4)] animate-fadeUp">
-      <img src="img/star.png" alt="Deck" class="w-20 mx-auto mb-6 animate-float">
-      <h3 class="text-2xl font-[cinzel] text-[#61D1FF] mb-2">Build Your Deck</h3>
-      <p class="text-gray-300 font-[Poppins] text-sm">
-        Collect, combine, and forge cards to create the ultimate deck of champions. Every card tells a story.
-      </p>
-    </div>
+            <div
+                class="feature-card text-center p-6 rounded-2xl bg-black/60 border border-[#61D1FF]/20 hover:border-[#61D1FF] transition-all duration-500 shadow-[0_0_15px_rgba(97,209,255,0.15)] hover:shadow-[0_0_25px_rgba(97,209,255,0.4)] animate-fadeUp">
+                <img src="img/star.png" alt="Deck" class="w-20 mx-auto mb-6 animate-float">
+                <h3 class="text-2xl font-[cinzel] text-[#61D1FF] mb-2">Build Your Deck</h3>
+                <p class="text-gray-300 font-[Poppins] text-sm">
+                    Collect, combine, and forge cards to create the ultimate deck of champions. Every card tells a
+                    story.
+                </p>
+            </div>
 
-    <div class="feature-card text-center p-6 rounded-2xl bg-black/60 border border-[#61D1FF]/20 hover:border-[#61D1FF] transition-all duration-500 shadow-[0_0_15px_rgba(97,209,255,0.15)] hover:shadow-[0_0_25px_rgba(97,209,255,0.4)] animate-fadeUp delay-200">
-      <img src="img/Coin.png" alt="Market" class="w-20 mx-auto mb-6 animate-float-delayed">
-      <h3 class="text-2xl font-[cinzel] text-[#61D1FF] mb-2">Trade in the Market</h3>
-      <p class="text-gray-300 font-[Poppins] text-sm">
-        Buy, sell, and trade your rare cards with other summoners. The market never sleeps.
-      </p>
-    </div>
+            <div
+                class="feature-card text-center p-6 rounded-2xl bg-black/60 border border-[#61D1FF]/20 hover:border-[#61D1FF] transition-all duration-500 shadow-[0_0_15px_rgba(97,209,255,0.15)] hover:shadow-[0_0_25px_rgba(97,209,255,0.4)] animate-fadeUp delay-200">
+                <img src="img/Coin.png" alt="Market" class="w-20 mx-auto mb-6 animate-float-delayed">
+                <h3 class="text-2xl font-[cinzel] text-[#61D1FF] mb-2">Trade in the Market</h3>
+                <p class="text-gray-300 font-[Poppins] text-sm">
+                    Buy, sell, and trade your rare cards with other summoners. The market never sleeps.
+                </p>
+            </div>
 
-    <div class="feature-card text-center p-6 rounded-2xl bg-black/60 border border-[#61D1FF]/20 hover:border-[#61D1FF] transition-all duration-500 shadow-[0_0_15px_rgba(97,209,255,0.15)] hover:shadow-[0_0_25px_rgba(97,209,255,0.4)] animate-fadeUp delay-400">
-      <img src="img/Shield.png" alt="Arena" class="w-20 mx-auto mb-6 animate-float">
-      <h3 class="text-2xl font-[cinzel] text-[#61D1FF] mb-2">Conquer the Arena</h3>
-      <p class="text-gray-300 font-[Poppins] text-sm">
-        Challenge others in epic duels. Show your strategy and rise among the legendary summoners.
-      </p>
-    </div>
-  </div>
-</section>
+            <div
+                class="feature-card text-center p-6 rounded-2xl bg-black/60 border border-[#61D1FF]/20 hover:border-[#61D1FF] transition-all duration-500 shadow-[0_0_15px_rgba(97,209,255,0.15)] hover:shadow-[0_0_25px_rgba(97,209,255,0.4)] animate-fadeUp delay-400">
+                <img src="img/Shield.png" alt="Arena" class="w-20 mx-auto mb-6 animate-float">
+                <h3 class="text-2xl font-[cinzel] text-[#61D1FF] mb-2">Conquer the Arena</h3>
+                <p class="text-gray-300 font-[Poppins] text-sm">
+                    Challenge others in epic duels. Show your strategy and rise among the legendary summoners.
+                </p>
+            </div>
+        </div>
+    </section>
 
 
-<section class="relative py-32 bg-black text-white overflow-hidden">
-  <div class="text-center mb-16">
-    <h2 class="text-5xl font-[cinzel] text-[#61D1FF] drop-shadow-[0_0_10px_#61D1FF] animate-fadeIn">
-      Meet the Summoners
-    </h2>
-    <p class="text-gray-400 text-lg mt-4 font-[Poppins]">
-      Legends from across realms — each card holds their soul, their story, and their power.
-    </p>
-  </div>
+    <section class="relative py-32 bg-black text-white overflow-hidden">
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-[cinzel] text-[#61D1FF] drop-shadow-[0_0_10px_#61D1FF] animate-fadeIn">
+                Meet the Summoners
+            </h2>
+            <p class="text-gray-400 text-lg mt-4 font-[Poppins]">
+                Legends from across realms — each card holds their soul, their story, and their power.
+            </p>
+        </div>
 
-  <div class="relative flex items-center justify-center gap-16 px-10">
+        <div class="relative flex items-center justify-center gap-16 px-10">
 
-    <button id="prevCard" class="absolute left-8 text-[#61D1FF] text-4xl hover:scale-125 transition">❮</button>
+            <button id="prevCard" class="absolute left-8 text-[#61D1FF] text-4xl hover:scale-125 transition">❮</button>
 
-    <div id="cardCarousel" class="flex gap-12 transition-transform duration-700">
+            <div id="cardCarousel" class="flex gap-12 transition-transform duration-700">
 
-      <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(97,209,255,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
-        style="background-image: url('img/L01.png');">
-      </div>
+                <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(97,209,255,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
+                    style="background-image: url('img/L01.png');">
+                </div>
 
-      <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(255,107,0,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
-        style="background-image: url('img/M01.png');">
-      </div>
+                <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(255,107,0,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
+                    style="background-image: url('img/M01.png');">
+                </div>
 
-      <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,32,240,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
-        style="background-image: url('img/E02.png');">
-      </div>
+                <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,32,240,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
+                    style="background-image: url('img/E02.png');">
+                </div>
 
-      <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(0,255,153,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
-        style="background-image: url('img/R02.png');">
-      </div>
+                <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(0,255,153,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
+                    style="background-image: url('img/R02.png');">
+                </div>
 
-      <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,160,160,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
-        style="background-image: url('img/C02.png');">
-      </div>
-       <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,160,160,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
-        style="background-image: url('img/C02.png');">
-      </div>
-       <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,160,160,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
-        style="background-image: url('img/C02.png');">
-      </div>
+                <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,160,160,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
+                    style="background-image: url('img/C02.png');">
+                </div>
+                <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,160,160,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
+                    style="background-image: url('img/C02.png');">
+                </div>
+                <div class="card bg-cover bg-center w-[17rem] h-[28rem] rounded-2xl shadow-[0_0_25px_rgba(160,160,160,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
+                    style="background-image: url('img/C02.png');">
+                </div>
 
-    </div>
+            </div>
 
-    <button id="nextCard" class="absolute right-8 text-[#61D1FF] text-4xl hover:scale-125 transition">❯</button>
-  </div>
-  <div class="flex justify-center items-center"><a href="Market.html"
+            <button id="nextCard" class="absolute right-8 text-[#61D1FF] text-4xl hover:scale-125 transition">❯</button>
+        </div>
+        <div class="flex justify-center items-center"><a href="Market.html"
                 class="flex justify-center items-center w-72 mt-10 bg-[#61D1FF] text-black py-3 rounded-full font-bold font-[Poppins] hover:bg-black hover:text-[#61D1FF] border-2 border-[#61D1FF] shadow-[0_0_15px_#61D1FF] transition-transform hover:scale-105">
                 Start Ur Collection
             </a></div>
-</section>
+    </section>
 
 
     <footer class="my-16">
@@ -218,23 +222,24 @@
             </div>
         </div>
     </div>
-        <script src="CardSystem.js"></script>
+    <script src="CardSystem.js"></script>
     <script>
-const carousel = document.getElementById("cardCarousel");
-let scrollPosition = 0;
+        const carousel = document.getElementById("cardCarousel");
+        let scrollPosition = 0;
 
-document.getElementById("nextCard").addEventListener("click", () => {
-  scrollPosition -= 350;
-  if (scrollPosition < -1050) scrollPosition = 0;
-  carousel.style.transform = `translateX(${scrollPosition}px)`;
-});
+        document.getElementById("nextCard").addEventListener("click", () => {
+            scrollPosition -= 350;
+            if (scrollPosition < -1050) scrollPosition = 0;
+            carousel.style.transform = `translateX(${scrollPosition}px)`;
+        });
 
-document.getElementById("prevCard").addEventListener("click", () => {
-  scrollPosition += 350;
-  if (scrollPosition > 0) scrollPosition = -1050;
-  carousel.style.transform = `translateX(${scrollPosition}px)`;
-});
-</script>
+        document.getElementById("prevCard").addEventListener("click", () => {
+            scrollPosition += 350;
+            if (scrollPosition > 0) scrollPosition = -1050;
+            carousel.style.transform = `translateX(${scrollPosition}px)`;
+        });
+
+    </script>
 </body>
 
 </html>
