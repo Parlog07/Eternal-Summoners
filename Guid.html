@@ -16,7 +16,8 @@
 </head>
 
 <body class="bg-black">
-<header id="mainHeader" class="hidden md:flex sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
+    <header id="mainHeader"
+        class="hidden lg:flex sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md gap-72 justify-around p-8 mr-24 transition-all duration-500">
         <div class="Logo w-48"> <a href="index.html"><img src="img/miniLogo.png" alt="Logo"></a></div>
         <div class=" flex justify-center items-center">
             <ul class="flex  gap-28 justify-center items-center text-[#A0A0A0] font-bold font-[poppins]">
@@ -238,7 +239,7 @@
         </div>
     </section>
     <div class="mb-32 bg-black flex items-center justify-center">
-        <div class="hidden md:flex gap-10 text-center font-[cinzel]">
+        <div class="hidden md:hidden lg:flex gap-10 text-center font-[cinzel]">
             <h2 class="text-yellow-400 text-2xl font-semibold uppercase">Mythic Cards</h2>
             <p class="text-white text-center text-[22px]">--></p>
             <h2 class="text-red-500 text-2xl font-semibold uppercase">Legendary Cards</h2>
@@ -341,12 +342,16 @@
     </footer>
 
 
-     <!-- Mobile navbar -->
+    <!-- Mobile Nav -->
     <nav id="mobile-nav"
-        class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-md border-t border-[#61D1FF]/40 flex justify-around items-center py-3 md:hidden z-50">
+        class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-md border-t border-[#61D1FF]/40 flex justify-around items-center py-3 z-50 md:hidden">
         <a href="index.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
             <img src="img/homeicon.png" class="w-6 h-6 mb-1" alt="Home">
             <span class="text-xs font-[poppins]">Home</span>
+        </a>
+        <a href="Guid.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/bookicon.png" class="w-6 h-6 mb-1" alt="Guide">
+            <span class="text-xs font-[poppins]">Guide</span>
         </a>
         <a href="Market.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
             <img src="img/shopicon.png" class="w-6 h-6 mb-1" alt="Market">
@@ -358,16 +363,40 @@
         </a>
         <a href="Favorite.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
             <img src="img/favicon.png" class="w-6 h-6 mb-1" alt="Favorite">
-            <span class="text-xs font-[poppins]">Favorites</span>
+            <span class="text-xs font-[poppins]">Favs</span>
+        </a>
+        <button id="cart-btn" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/Shopping.png" alt="Cart-Symbol" class="w-6 h-6 mb-1">
+            <span class="text-xs font-[poppins]">Cart</span>
+        </button>
+    </nav>
+    <!-- Tablet Nav -->
+    <nav id="tablet-nav"
+        class="hidden md:flex lg:hidden fixed top-0 left-0 h-full w-24 bg-black/90 backdrop-blur-md border-r border-[#61D1FF]/40 flex-col items-center justify-center gap-8 z-50">
+        <a href="index.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/homeicon.png" class="w-7 h-7 mb-1" alt="Home">
+            <span class="text-[11px] font-[poppins]">Home</span>
         </a>
         <a href="Guid.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
-            <img src="img/bookicon.png" class="w-6 h-6 mb-1" alt="Guide">
-            <span class="text-xs font-[poppins]">Guide</span>
+            <img src="img/bookicon.png" class="w-7 h-7 mb-1" alt="Guide">
+            <span class="text-[11px] font-[poppins]">Guide</span>
         </a>
-         <button id="cart-btn" class="flex md:hidden flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
-    <img src="img/Shopping.png" alt="Cart-Symbol" class="w-6 h-6 mb-1">
-    <span class="text-xs font-[poppins]">Cart</span>
-</button>
+        <a href="Market.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/shopicon.png" class="w-7 h-7 mb-1" alt="Market">
+            <span class="text-[11px] font-[poppins]">Market</span>
+        </a>
+        <a href="My-Deck.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/cardicon.png" class="w-7 h-7 mb-1" alt="Deck">
+            <span class="text-[11px] font-[poppins]">Deck</span>
+        </a>
+        <a href="Favorite.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/favicon.png" class="w-7 h-7 mb-1" alt="Favorite">
+            <span class="text-[11px] font-[poppins]">Favs</span>
+        </a>
+        <button id="cart-btn" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/Shopping.png" alt="Cart-Symbol" class="w-7 h-7 mb-1">
+            <span class="text-[11px] font-[poppins]">Cart</span>
+        </button>  
     </nav>
 
     <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
@@ -392,7 +421,7 @@
             </div>
         </div>
     </div>
-        <script src="CardSystem.js"></script>
+    <script src="CardSystem.js"></script>
     <script>
         const items = document.querySelectorAll('[class*="border-cyan-500"]');
         items.forEach(item => {
