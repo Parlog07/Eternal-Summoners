@@ -167,7 +167,7 @@ document.addEventListener("click", e => {
 
 displayCards(cards);
 
-const cartIcon = document.getElementById("cart-btn");
+const cartButtons = document.querySelectorAll("#cart-btn");
 const cartModal = document.getElementById("cart-modal");
 const closeCart = document.getElementById("close-cart");
 const cartItemsContainer = document.getElementById("cart-items");
@@ -217,9 +217,11 @@ cartItemsContainer?.addEventListener("click", e => {
   }
 });
 
-cartIcon?.addEventListener("click", () => {
-  updateCartDisplay();
-  cartModal.classList.remove("hidden");
+cartButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    updateCartDisplay();
+    cartModal.classList.remove("hidden");
+  });
 });
 
 closeCart?.addEventListener("click", () => {

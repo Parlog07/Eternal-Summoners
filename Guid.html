@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-black">
-<header id="mainHeader" class="sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
+<header id="mainHeader" class="hidden md:flex sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
         <div class="Logo w-48"> <a href="index.html"><img src="img/miniLogo.png" alt="Logo"></a></div>
         <div class=" flex justify-center items-center">
             <ul class="flex  gap-28 justify-center items-center text-[#A0A0A0] font-bold font-[poppins]">
@@ -39,8 +39,8 @@
             how to build powerful decks, master the elements, and rise as one of the <br>realm’s greatest summoners.
         </p>
     </section>
-    <section class="w-[99vw] overflow-hidden ">
-        <div class="flex overflow-hidden  py-8 w-[400%]">
+    <section class="md:w-[99vw] overflow-hidden ">
+        <div class="flex overflow-hidden  py-8 md:w-[400%]">
             <div class="flex animate-scroll space-x-6 px-[0.5rem]">
                 <img src="img/Ballena.png" class="object-contain" alt="">
                 <img src="img/dragon.png" class=" object-contain" alt="">
@@ -61,8 +61,8 @@
     <section class="text-white">
         <h2 id="h2">How To Play Eternal Summoners :</h2>
         <div class="flex justify-center p-12"><img src="img/Book.png" alt=""></div>
-        <div class="flex justify-center items-center pl-44">
-            <div class="grid grid-cols-2 gap-y-16 ">
+        <div class="flex justify-center items-center text-center md:pl-44">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-16 ">
                 <div>
                     <h6 class="mb-6 text-purple-600 text-2xl font-bold font-[exo 2]">1. Build Your Deck</h6>
                     <p>Collect digital cards from the Market.<br>Each card represents a Summoner, <br>Creature, or
@@ -238,7 +238,7 @@
         </div>
     </section>
     <div class="mb-32 bg-black flex items-center justify-center">
-        <div class="flex gap-10 text-center font-[cinzel]">
+        <div class="hidden md:flex gap-10 text-center font-[cinzel]">
             <h2 class="text-yellow-400 text-2xl font-semibold uppercase">Mythic Cards</h2>
             <p class="text-white text-center text-[22px]">--></p>
             <h2 class="text-red-500 text-2xl font-semibold uppercase">Legendary Cards</h2>
@@ -339,6 +339,37 @@
         </div>
         <p class="text-white flex justify-center items-center m-8">© All rights reserved by Ayoub-Amine</p>
     </footer>
+
+
+     <!-- Mobile navbar -->
+    <nav id="mobile-nav"
+        class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-md border-t border-[#61D1FF]/40 flex justify-around items-center py-3 md:hidden z-50">
+        <a href="index.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/homeicon.png" class="w-6 h-6 mb-1" alt="Home">
+            <span class="text-xs font-[poppins]">Home</span>
+        </a>
+        <a href="Market.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/shopicon.png" class="w-6 h-6 mb-1" alt="Market">
+            <span class="text-xs font-[poppins]">Market</span>
+        </a>
+        <a href="My-Deck.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/cardicon.png" class="w-6 h-6 mb-1" alt="Deck">
+            <span class="text-xs font-[poppins]">Deck</span>
+        </a>
+        <a href="Favorite.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/favicon.png" class="w-6 h-6 mb-1" alt="Favorite">
+            <span class="text-xs font-[poppins]">Favorites</span>
+        </a>
+        <a href="Guid.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/bookicon.png" class="w-6 h-6 mb-1" alt="Guide">
+            <span class="text-xs font-[poppins]">Guide</span>
+        </a>
+         <button id="cart-btn" class="flex md:hidden flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+    <img src="img/Shopping.png" alt="Cart-Symbol" class="w-6 h-6 mb-1">
+    <span class="text-xs font-[poppins]">Cart</span>
+</button>
+    </nav>
+
     <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
         <div class="bg-white rounded-2xl w-[500px] p-6 shadow-lg relative">
             <button id="close-cart"

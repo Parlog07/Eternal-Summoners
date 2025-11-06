@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-black">
-<header id="mainHeader" class="sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
+<header id="mainHeader" class="hidden md:flex sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
         <div class="Logo w-48"> <a href="index.html"><img src="img/miniLogo.png" alt="Logo"></a></div>
         <div class=" flex justify-center items-center">
             <ul class="flex  gap-28 justify-center items-center text-[#A0A0A0] font-bold font-[poppins]">
@@ -38,7 +38,7 @@
             <br>Here you can revisit, manage, and summon the cards you treasure most. <br>Every card here reflects your
             journey as a summoner.</p>
     </div>
-    <div class="flex justify-center items-center m-24 gap-8 text-center">
+    <div class="flex justify-center items-center my-24 md:gap-8 gap-3 text-center">
         <button class="filter-btn bg-yellow-500 text-white rounded-xl w-28 py-1 font-[poppins] "
             data-rarity="Mythic">Mythic</button>
         <button class="filter-btn bg-red-500 text-white rounded-xl w-28 py-1 font-[poppins] "
@@ -50,9 +50,9 @@
         <button class="filter-btn bg-gray-400 text-white rounded-xl w-28 py-1 font-[poppins] "
             data-rarity="Common">Common</button>
     </div>
-    <section id="market" class="flex justify-center items-center">
-        <div class="Card-Container grid grid-cols-3 gap-36">
-            
+    <section id="My-Deck" class="flex justify-center items-center">
+        <div class="Card-Container grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-8 md:gap-36  ">
+
 
         </div>
     </section>
@@ -95,6 +95,36 @@
         </div>
         <p class="text-white flex justify-center items-center m-8">© All rights reserved by Ayoub-Amine</p>
     </footer>
+
+ <!-- Mobile navbar -->
+    <nav id="mobile-nav"
+        class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-md border-t border-[#61D1FF]/40 flex justify-around items-center py-3 md:hidden z-50">
+        <a href="index.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/homeicon.png" class="w-6 h-6 mb-1" alt="Home">
+            <span class="text-xs font-[poppins]">Home</span>
+        </a>
+        <a href="Market.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/shopicon.png" class="w-6 h-6 mb-1" alt="Market">
+            <span class="text-xs font-[poppins]">Market</span>
+        </a>
+        <a href="My-Deck.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/cardicon.png" class="w-6 h-6 mb-1" alt="Deck">
+            <span class="text-xs font-[poppins]">Deck</span>
+        </a>
+        <a href="Favorite.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/favicon.png" class="w-6 h-6 mb-1" alt="Favorite">
+            <span class="text-xs font-[poppins]">Favorites</span>
+        </a>
+        <a href="Guid.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/bookicon.png" class="w-6 h-6 mb-1" alt="Guide">
+            <span class="text-xs font-[poppins]">Guide</span>
+        </a>
+         <button id="cart-btn" class="flex md:hidden flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+    <img src="img/Shopping.png" alt="Cart-Symbol" class="w-6 h-6 mb-1">
+    <span class="text-xs font-[poppins]">Cart</span>
+</button>
+    </nav>
+
        <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
   <div class="bg-white rounded-2xl w-[500px] p-6 shadow-lg relative">
     <button id="close-cart" class="absolute top-2 right-2 text-black text-2xl font-bold hover:text-red-600">×</button>

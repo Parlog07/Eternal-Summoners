@@ -16,8 +16,9 @@
 </head>
 
 <body class="bg-black">
-<header id="mainHeader" class="sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
-       <div class="Logo w-48"> <a href="index.html"><img src="img/miniLogo.png" alt="Logo"></a></div>
+    <header id="mainHeader"
+        class="hidden md:flex sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md flex gap-72 justify-around p-8 mr-24 transition-all duration-500">
+        <div class="Logo w-48"> <a href="index.html"><img src="img/miniLogo.png" alt="Logo"></a></div>
         <div class=" flex justify-center items-center">
             <ul class="flex  gap-28 justify-center items-center text-[#A0A0A0] font-bold font-[poppins]">
                 <li class=" hover:text-[var(--main)] transition duration-500"><a href="Guid.html">Guide</a></li>
@@ -28,15 +29,17 @@
                 <li class=" hover:text-[var(--main)] transition duration-500"><a href="Favorite.html">Favorite</a></li>
             </ul>
         </div>
-         <button id="cart-btn" class="relative z-50 cursor-pointer">
-  <img src="img/Shopping.png" alt="Cart-Symbol" class="w-8 h-8">
-</button>
+        <button id="cart-btn" class="relative z-50 cursor-pointer">
+            <img src="img/Shopping.png" alt="Cart-Symbol" class="w-8 h-8">
+        </button>
     </header>
     <div class="text-center">
         <h1 id="Titel" class="text-[var(--main)]">My Deck</h1>
-        <p id="Description" class="text-center">Welcome to your Deck of Eternity — the heart of your summoner’s power.<br>Here you can view, organize, and manage your collected cards. <br>Combine elements, discover synergies, and prepare the ultimate deck for your next battle</p>
+        <p id="Description" class="text-center">Welcome to your Deck of Eternity — the heart of your summoner’s
+            power.<br>Here you can view, organize, and manage your collected cards. <br>Combine elements, discover
+            synergies, and prepare the ultimate deck for your next battle</p>
     </div>
-    <div class="flex justify-center items-center m-24 gap-8 text-center">
+    <div class="flex justify-center items-center my-24 md:gap-8 gap-3 text-center">
         <button class="filter-btn bg-yellow-500 text-white rounded-xl w-28 py-1 font-[poppins] "
             data-rarity="Mythic">Mythic</button>
         <button class="filter-btn bg-red-500 text-white rounded-xl w-28 py-1 font-[poppins] "
@@ -49,8 +52,8 @@
             data-rarity="Common">Common</button>
     </div>
     <section id="My-Deck" class="flex justify-center items-center">
-        <div class="Card-Container grid grid-cols-3 gap-36">
-            
+        <div class="Card-Container grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-8 md:gap-36  ">
+
 
         </div>
     </section>
@@ -93,24 +96,57 @@
         </div>
         <p class="text-white flex justify-center items-center m-8">© All rights reserved by Ayoub-Amine</p>
     </footer>
-     <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
-  <div class="bg-white rounded-2xl w-[500px] p-6 shadow-lg relative">
-    <button id="close-cart" class="absolute top-2 right-2 text-black text-2xl font-bold hover:text-red-600">×</button>
-    <h2 class="text-2xl font-[cinzel] text-center text-[#61D1FF] mb-4">Your Cart</h2>
+    <!-- Mobile navbar -->
+    <nav id="mobile-nav"
+        class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-md border-t border-[#61D1FF]/40 flex justify-around items-center py-3 md:hidden z-50">
+        <a href="index.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/homeicon.png" class="w-6 h-6 mb-1" alt="Home">
+            <span class="text-xs font-[poppins]">Home</span>
+        </a>
+        <a href="Market.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/shopicon.png" class="w-6 h-6 mb-1" alt="Market">
+            <span class="text-xs font-[poppins]">Market</span>
+        </a>
+        <a href="My-Deck.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/cardicon.png" class="w-6 h-6 mb-1" alt="Deck">
+            <span class="text-xs font-[poppins]">Deck</span>
+        </a>
+        <a href="Favorite.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/favicon.png" class="w-6 h-6 mb-1" alt="Favorite">
+            <span class="text-xs font-[poppins]">Favorites</span>
+        </a>
+        <a href="Guid.html" class="flex flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+            <img src="img/bookicon.png" class="w-6 h-6 mb-1" alt="Guide">
+            <span class="text-xs font-[poppins]">Guide</span>
+        </a>
+         <button id="cart-btn" class="flex md:hidden flex-col items-center text-[#A0A0A0] hover:text-[#61D1FF] transition">
+    <img src="img/Shopping.png" alt="Cart-Symbol" class="w-6 h-6 mb-1">
+    <span class="text-xs font-[poppins]">Cart</span>
+</button>
+    </nav>
 
-    <div id="cart-items" class="max-h-[300px] overflow-y-auto flex flex-col gap-3"></div>
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+        <div class="bg-white rounded-2xl w-[500px] p-6 shadow-lg relative">
+            <button id="close-cart"
+                class="absolute top-2 right-2 text-black text-2xl font-bold hover:text-red-600">×</button>
+            <h2 class="text-2xl font-[cinzel] text-center text-[#61D1FF] mb-4">Your Cart</h2>
 
-    <div class="flex justify-between items-center mt-6 border-t border-gray-300 pt-3">
-      <p class="text-black font-bold text-lg">Total:</p>
-      <p id="cart-total" class="text-[#ff6b00] font-bold text-lg">$0</p>
+            <div id="cart-items" class="max-h-[300px] overflow-y-auto flex flex-col gap-3"></div>
+
+            <div class="flex justify-between items-center mt-6 border-t border-gray-300 pt-3">
+                <p class="text-black font-bold text-lg">Total:</p>
+                <p id="cart-total" class="text-[#ff6b00] font-bold text-lg">$0</p>
+            </div>
+
+            <div class="flex justify-center gap-4 mt-6">
+                <button id="clear-cart"
+                    class="bg-red-600 hover:bg-red-700 text-white font-[poppins] px-4 py-2 rounded-xl">Clear
+                    Cart</button>
+                <button id="checkout"
+                    class="bg-[#61D1FF] hover:bg-black hover:text-[#61D1FF] border-2 border-[#61D1FF] text-black font-[poppins] px-4 py-2 rounded-xl">Checkout</button>
+            </div>
+        </div>
     </div>
-
-    <div class="flex justify-center gap-4 mt-6">
-      <button id="clear-cart" class="bg-red-600 hover:bg-red-700 text-white font-[poppins] px-4 py-2 rounded-xl">Clear Cart</button>
-      <button id="checkout" class="bg-[#61D1FF] hover:bg-black hover:text-[#61D1FF] border-2 border-[#61D1FF] text-black font-[poppins] px-4 py-2 rounded-xl">Checkout</button>
-    </div>
-  </div>
-</div>
     <script src="CardSystem.js"></script>
 </body>
 
