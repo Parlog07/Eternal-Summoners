@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Kavoon&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Play</title>
+</head>
+  <header id="mainHeader"
+    class="hidden lg:flex sticky pr-40 w-[100%] top-0 z-50 bg-black/90 backdrop-blur-md gap-72 justify-around p-8 mr-24 transition-all duration-500">
+    <div class="Logo w-48"> <a href="index.html"><img src="img/miniLogo.png" alt="Logo"></a></div>
+    <div class=" flex justify-center items-center">
+      <ul class="flex  gap-28 justify-center items-center text-[#A0A0A0] font-bold font-[poppins]">
+        <li class=" hover:text-[var(--main)] transition duration-500"><a href="Guid.html">Guide</a></li>
+        <li class=" hover:text-[var(--main)] transition duration-500"><a href="Market.html">Market</a></li>
+        <li class=" hover:text-[var(--main)] transition duration-500"><a href="Play.html">
+            <span class="text-4xl font-[kavoon]">Play</span></a></li>
+        <li class=" hover:text-[var(--main)] transition duration-500"><a href="My-Deck.html">My Deck</a></li>
+        <li class=" hover:text-[var(--main)] transition duration-500"><a href="Favorite.html">Favorite</a></li>
+      </ul>
+    </div>
+    <button id="cart-btn" class="relative z-50 cursor-pointer">
+      <img src="img/Shopping.png" alt="Cart-Symbol" class="w-8 h-8">
+    </button>
+  </header>
+<body class="bg-black text-white font-[poppins] overflow-hidden">
+
+
+  <main
+    class="flex justify-between items-stretch h-[calc(100vh-5rem)] bg-gradient-to-b from-[#020202] via-[#0a0a0a] to-[#111]">
+    <aside class="w-[18%] bg-black/70 border-r border-[#61D1FF]/30 flex flex-col justify-between p-4 overflow-scroll [scrollbar-width:none]">
+      <div>
+        <h2 class="text-[#61D1FF] font-[cinzel] text-2xl mb-3 text-center">Deck</h2>
+        <div id="deck-zone"
+          class="flex justify-center items-center flex-col gap-3 overflow-auto h-full py-3 scrollbar-thin scrollbar-thumb-[#61D1FF]/40"></div>
+      </div>
+          <button id="draw-card"
+        class="bg-[#61D1FF] text-black py-2 rounded-lg font-bold hover:bg-black hover:text-[#61D1FF] border-2 border-[#61D1FF] transition z-10 fixed bottom-3 w-80">Draw
+        Card</button>
+    </aside>
+
+
+    <section class="flex-1 flex flex-col justify-between items-center relative border-x border-[#61D1FF]/30">
+      <div class="w-full text-center py-2 bg-black/80 border-b border-[#61D1FF]/30">
+        <h2 class="text-[#ff6b6b] font-[cinzel] text-3xl">Enemy Field</h2>
+      </div>
+
+      <div id="enemy-field" class="grid grid-cols-5 gap-3 p-4 justify-center mt-3 h-[200px]">
+        <div class="col-span-5 flex justify-center items-center gap-3">
+          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
+          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
+          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
+          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
+          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
+        </div>
+      </div>
+
+      <div id="battlefield"
+        class="grid grid-cols-5 gap-3 pt-5 -pl-10 w-[90%] h-[250px] border border-[#61D1FF]/40 rounded-xl bg-black/40"></div>
+
+      <div id="player-hand"
+        class="grid grid-cols-5 h-[300px] gap-4 bg-black/70 border-t border-[#61D1FF]/30 w-full py-3">
+      </div>
+    </section>
+
+    <aside class="w-[18%] bg-black/70 border-l border-[#61D1FF]/30 flex flex-col justify-between p-4 text-center">
+      <div>
+        <h2 class="text-[#61D1FF] font-[cinzel] text-2xl mb-3">Game Info</h2>
+        <p id="turn-status" class="text-[#61D1FF] font-bold mb-1">Your Turn</p>
+        <p class="text-sm text-gray-400">Summon: <span class="text-green-400 font-bold">Available</span></p>
+      </div>
+      <button id="end-turn-side"
+        class="bg-[#61D1FF] text-black py-2 rounded-lg font-bold hover:bg-black hover:text-[#61D1FF] border-2 border-[#61D1FF] transition">End
+        Turn</button>
+    </aside>
+  </main>
+
+  <script>
+
+    let deck = JSON.parse(localStorage.getItem("deck")) || [];
+
+
+    const deckZone = document.getElementById("deck-zone");
+    const playerHand = document.getElementById("player-hand");
+    const drawButton = document.getElementById("draw-card");
+    const battlefield = document.getElementById("battlefield");
+    const hand = [];
+
+    function getRarityColor(rarity) {
+      switch (rarity) {
+        case "Mythic": return "#FFD700";
+        case "Legendary": return "#FF6B00";
+        case "Epic": return "#A020F0";
+        case "Rare": return "#00FF99";
+        case "Common": return "#A0A0A0";
+        default: return "#FFFFFF";
+      }
+    }
+
+    function renderDeck() {
+      deckZone.innerHTML = "";
+      deck.forEach(card => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+
+        <div class="some w-[17rem] h-[29rem] p-3 relative bg-cover flex flex-col justify-between rounded-2xl shadow-lg transition-transform duration-300 hover:scale-105" style="background-image: url('${card.bg}');">
+          <div class="top font-bold text-center text-[26px]" style="color:${getRarityColor(card.rarity)};">
+            <h2>${card.rarity.charAt(0)}</h2>
+          </div>
+          <div class="bottom flex flex-col text-white font-bold gap-6">
+            <div class="Power flex justify-around">
+              <p>Def : ${card.def}</p>
+              <p>Atk : ${card.atk}</p>
+            </div>
+            <p class="charcter-descrip text-center text-[10px] leading-tight">${card.description}</p>
+            <h2 class="charcter-name text-center text-black mb-1 font-exo">${card.name}</h2>
+          </div>
+        </div>`
+
+        deckZone.appendChild(div);
+      });
+    }
+
+    function renderHand() {
+      playerHand.innerHTML = "";
+      hand.forEach(card => {
+        // const div = document.createElement("div");
+        // div.draggable = true;
+        // div.classList.add("h-full")
+        playerHand.innerHTML += `
+        <div class="some scale-50 -mt-32 w-[17rem] h-[29rem] p-3 relative bg-cover flex flex-col justify-between rounded-2xl shadow-lg" style="background-image: url('${card.bg}');" draggable = "true">
+          <div class="top font-bold text-center text-[26px]" style="color:${getRarityColor(card.rarity)};">
+            <h2>${card.rarity.charAt(0)}</h2>
+          </div>
+          <div class="bottom flex flex-col text-white font-bold gap-6">
+            <div class="Power flex justify-around">
+              <p>Def : ${card.def}</p>
+              <p>Atk : ${card.atk}</p>
+            </div>
+            <p class="charcter-descrip text-center text-[10px] leading-tight">${card.description}</p>
+            <h2 class="charcter-name text-center text-black mb-1 font-exo">${card.name}</h2>
+          </div>
+        </div>`
+        // playerHand.appendChild(div);
+      });
+      addDragEvents();
+    }
+
+    function addDragEvents() {
+      document.querySelectorAll("#player-hand div").forEach(card => {
+        card.addEventListener("dragstart", e => {
+          e.dataTransfer.setData("card", JSON.stringify(hand.find(c => c.bg === e.target.style.backgroundImage.slice(5, -2))));
+        });
+      });
+    }
+
+    drawButton.addEventListener("click", () => {
+      if (hand.length >= 5 || deck.length === 0) return;
+      const randomIndex = Math.floor(Math.random() * deck.length);
+      const drawnCard = deck.splice(randomIndex, 1)[0];
+      hand.push(drawnCard);
+      renderDeck();
+      renderHand();
+      // localStorage.setItem("deck", JSON.stringify(deck));
+    });
+
+    battlefield.addEventListener("dragover", e => e.preventDefault());
+battlefield.addEventListener("drop", e => {
+  e.preventDefault();
+
+  const card = JSON.parse(e.dataTransfer.getData("card"));
+  if (!card) return;
+
+  const draggedElement = [...document.querySelectorAll("#player-hand .some")]
+    .find(el => el.querySelector(".charcter-name").textContent === card.name);
+
+  if (!draggedElement) return;
+  const cardClone = draggedElement.cloneNode(true);
+
+
+
+  const actions = document.createElement("div");
+  actions.className = "absolute bottom-2 flex gap-2";
+
+  actions.innerHTML = `
+    <button class="attack bg-[#61D1FF] text-black px-2 py-1 rounded text-xs font-bold border border-[#61D1FF]">⚔️</button>
+    <button class="defend bg-black text-[#61D1FF] px-2 py-1 rounded text-xs font-bold border border-[#61D1FF]">🛡️</button>
+  `;
+
+  cardClone.appendChild(actions);
+
+  battlefield.appendChild(cardClone);
+
+  const attackBtn = actions.querySelector(".attack");
+  const defendBtn = actions.querySelector(".defend");
+
+  attackBtn.addEventListener("click", () => {
+    attackBtn.remove();
+    defendBtn.remove();
+  });
+
+  defendBtn.addEventListener("click", () => {
+    cardClone.classList.add("rotate-90") ;
+    attackBtn.remove();
+    defendBtn.remove();
+  });
+
+  const index = hand.findIndex(c => c.name === card.name);
+  if (index > -1) hand.splice(index, 1);
+
+  renderHand();
+});
+renderDeck();
+  </script>
+</body>
+
+</html>
