@@ -53,13 +53,9 @@
         <h2 class="text-[#ff6b6b] font-[cinzel] text-3xl">Enemy Field</h2>
       </div>
 
-      <div id="enemy-field" class="grid grid-cols-5 gap-3 p-4 justify-center mt-3 h-[200px]">
+      <div id="enemy-field" class="grid grid-cols-5 gap-3 p-4 justify-center mt-3 h-[250px] w-[95%] border border-[#ff0000]/40 rounded-xl mb-4 ">
         <div class="col-span-5 flex justify-center items-center gap-3">
-          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
-          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
-          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
-          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
-          <div class="w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-[#ff6b6b]/20"></div>
+          
         </div>
       </div>
 
@@ -108,7 +104,7 @@
     function renderDeck() {
       deckZone.innerHTML = "";
     document.getElementById("deck-count").textContent = deck.length;
-      deck.forEach(card => {
+      deck.forEach(card => {  
         const div = document.createElement("div");
         div.innerHTML = `
 
@@ -190,8 +186,8 @@ battlefield.addEventListener("drop", e => {
 
   actions.innerHTML = `
   <div class = "flex justify-center items-center gap-6 w-[15rem]">
-    <button class="attack bg-[#61D1FF] text-black p-4  rounded text-xs font-bold border border-[#61D1FF]">⚔️</button>
-    <button class="defend bg-black text-[#61D1FF] p-4  rounded text-xs font-bold border border-[#61D1FF]">🛡️</button>
+    <button class="attack bg-[#61D1FF] hover:bg-red-600 text-black p-6  rounded text-xs font-bold border border-[#61D1FF]">⚔️</button>
+    <button class="defend bg-black hover:bg-green-500 text-[#61D1FF] p-6  rounded text-xs font-bold border border-[#61D1FF]">🛡️</button>
     </div>
   `;
 
@@ -218,6 +214,45 @@ battlefield.addEventListener("drop", e => {
 
   renderHand();
 });
+
+
+const endTurnBtn = document.getElementById("end-turn-side");
+const turnStatus = document.getElementById("turn-status");
+let playerTurn = true;
+
+endTurnBtn.addEventListener("click", () => {
+  if (!playerTurn) return;
+
+  playerTurn = false;
+  turnStatus.textContent = "Enemy Turn";
+
+  drawButton.disabled = true;
+  drawButton.classList.add("opacity-50", "cursor-not-allowed");
+
+  setTimeout(() => {
+    spawnEnemyCard();
+  }, 800);
+
+  setTimeout(() => {
+    playerTurn = true;
+    turnStatus.textContent = "Your Turn";
+
+    drawButton.disabled = false;
+    drawButton.classList.remove("opacity-50", "cursor-not-allowed");
+  }, 1800);
+});
+
+function spawnEnemyCard() {
+  const enemyField = document.getElementById("enemy-field");
+
+  const enemyCard = document.createElement("div");
+  enemyCard.className = "w-28 h-44 border-2 border-[#ff6b6b] rounded-xl bg-cover bg-center";
+
+  enemyCard.style.backgroundImage = "url('img/E02.png')";
+
+  enemyField.appendChild(enemyCard);
+}
+
 renderDeck();
   </script>
 </body>
