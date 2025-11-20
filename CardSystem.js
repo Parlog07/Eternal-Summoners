@@ -259,3 +259,18 @@ window.addEventListener("scroll", () => {
     header.classList.remove("shadow-[0_0_20px_#61D1FF]");
   }
 });
+
+
+
+
+function priceDisplayer(){
+  let num = 0;
+  cards.forEach(card => {
+    if(card.price > num) {
+      num = card.price;
+    }
+    
+  })
+  console.log(num);
+}
+
